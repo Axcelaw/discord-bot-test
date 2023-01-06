@@ -14,6 +14,7 @@ data: new SlashCommandBuilder()
 				{ name: 'Movie', value: 'gif_movie' },
 			)),
   async execute(interaction) {
-    await interaction.reply('Gif!');
+    const category = interaction.options.getString('category');
+    await interaction.reply(`Gif choice: ${category}`);
   },
 }
