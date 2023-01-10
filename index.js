@@ -28,6 +28,8 @@ for (const file of commandFiles) {
 	}
 }
 
+console.log('#####################')
+
 for (const file of eventFiles) {
 	const filePath = path.join(eventsPath, file);
 	const event = require(filePath);
