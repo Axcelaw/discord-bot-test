@@ -10,6 +10,8 @@ module.exports = {
         new StringSelectMenuBuilder()
           .setCustomId('select')
           .setPlaceholder('Nothing selected')
+					.setMinValues(2)
+					.setMaxValues(3)
           .addOptions(
             {
               label: 'Select me',
@@ -21,6 +23,11 @@ module.exports = {
               description: 'This is also a description',
               value: 'second_option',
             },
+						{
+							label: 'I am also an option',
+							description: 'This is a description as well',
+							value: 'third_option',
+						},
           ),
       );
     
@@ -30,7 +37,9 @@ module.exports = {
 
     collector.on('collect', i => {
       if (i.user.id === interaction.user.id) {
-        i.reply(`${i.user} clicked on ${i.customId}: ${i.values[0]}`);
+        i.reply(`${i.user} clicked on ${i.customId}: ${i.values}`);
+        // Comment the line above and uncomment the line below to update the select menu choices.
+        // i.update({ content: 'Something was selected!', components: [] });
       } else {
         i.reply({ content: `These buttons aren't for you!`, ephemeral: true });
       }
